@@ -1,6 +1,7 @@
 import requests
 import sys
 import os
+import json
 from datetime import datetime
 
 class NexoraAPITester:
@@ -69,6 +70,16 @@ class NexoraAPITester:
             "GET",
             "status",
             200
+        )
+        
+    def test_ai_chat(self, message, language="en"):
+        """Test the AI chat endpoint"""
+        return self.run_test(
+            f"AI Chat ({language})",
+            "POST",
+            "chat",
+            200,
+            data={"message": message, "language": language}
         )
 
 def main():
