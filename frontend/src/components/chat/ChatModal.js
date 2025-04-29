@@ -142,11 +142,16 @@ const ChatModal = ({ isOpen, onClose }) => {
           >
             {/* Header */}
             <div className="p-4 border-b border-white/10 flex justify-between items-center bg-primary/20">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center border border-accent/30">
-                  <span className="text-xl">🤖</span>
+              <div className="flex flex-col">
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center border border-accent/30">
+                    <span className="text-xl">🤖</span>
+                  </div>
+                  <h2 className="text-xl font-bold text-white">Nexora™ AI</h2>
                 </div>
-                <h2 className="text-xl font-bold text-white">Nexora™ AI</h2>
+                <p className="text-xs md:text-sm text-text-light ml-12 mt-1 italic">
+                  Your Intelligent, Bilingual eSIM and Digital Experience Partner
+                </p>
               </div>
               <button
                 onClick={onClose}
