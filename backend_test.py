@@ -104,6 +104,30 @@ def main():
         print("❌ Status get test failed")
     else:
         print(f"Status get response: {status_get_response}")
+    
+    # Test AI Chat API
+    print("\n=== Testing AI Chat API ===")
+    
+    # Test English chat
+    en_chat_success, en_chat_response = tester.test_ai_chat("Hello, what is Nexora?", "en")
+    if not en_chat_success:
+        print("❌ English chat test failed")
+    else:
+        print(f"English chat response: {json.dumps(en_chat_response, indent=2)}")
+    
+    # Test Burmese chat
+    mm_chat_success, mm_chat_response = tester.test_ai_chat("မင်္ဂလာပါ", "mm")
+    if not mm_chat_success:
+        print("❌ Burmese chat test failed")
+    else:
+        print(f"Burmese chat response: {json.dumps(mm_chat_response, indent=2)}")
+    
+    # Test eSIM related query
+    esim_chat_success, esim_chat_response = tester.test_ai_chat("How do I activate my eSIM?", "en")
+    if not esim_chat_success:
+        print("❌ eSIM query test failed")
+    else:
+        print(f"eSIM query response: {json.dumps(esim_chat_response, indent=2)}")
 
     # Print results
     print(f"\n📊 Tests passed: {tester.tests_passed}/{tester.tests_run}")
