@@ -52,7 +52,10 @@ const mmTranslation = {
   
   // Language Switcher
   "language.en": "အင်္ဂလိပ်",
-  "language.mm": "မြန်မာ"
+  "language.mm": "မြန်မာ",
+  
+  // AI Assistant
+  "nexora.ai.tagline": "သင့်ရဲ့ ဉာဏ်ရည်ရှိသော၊ ဘာသာစကားနှစ်မျိုးသုံး eSIM နှင့် ဒစ်ဂျစ်တယ်အတွေ့အကြုံမိတ်ဖက်"
 }
 
 export default mmTranslation;
