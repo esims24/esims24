@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { getAIResponse } from '../../utils/mockAIService';
 
 const ChatModal = ({ isOpen, onClose }) => {
   const { t, i18n } = useTranslation();
@@ -52,22 +53,11 @@ const ChatModal = ({ isOpen, onClose }) => {
     setIsTyping(true);
     
     try {
-      // Call Exa.ai API
-      const response = await fetch('https://api.exa.ai/v1/ask', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer b6d50048-3959-40ae-91e6-fea49cf7a764',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          query: inputValue,
-          language: 'auto'
-        })
-      });
+      // Use mock service instead of real API call
+      // This can be replaced with the actual Exa.ai API call in production
+      const data = await getAIResponse(inputValue);
       
-      const data = await response.json();
-      
-      // Add bot response
+      // Add bot response with typing effect
       setTimeout(() => {
         setMessages(prev => [
           ...prev, 
@@ -78,7 +68,7 @@ const ChatModal = ({ isOpen, onClose }) => {
           }
         ]);
         setIsTyping(false);
-      }, 1000); // Simulate typing delay for better UX
+      }, 1500); // Simulate typing delay for better UX
       
     } catch (error) {
       console.error('Error calling AI API:', error);
