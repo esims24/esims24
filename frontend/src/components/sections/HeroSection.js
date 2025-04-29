@@ -5,7 +5,7 @@ import Container from '../layout/Container';
 import NeonButton from '../layout/NeonButton';
 import { fadeInUp, staggerContainer } from '../../animations/variants';
 
-const HeroSection = () => {
+const HeroSection = ({ onOpenChat }) => {
   const { t } = useTranslation();
 
   // Custom variants for hero section
@@ -53,6 +53,11 @@ const HeroSection = () => {
     }
   };
 
+  // Scroll to products section
+  const scrollToProducts = () => {
+    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center py-20 relative overflow-hidden">
       {/* Background gradient and dots */}
@@ -87,12 +92,12 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
           >
             <motion.div variants={buttonVariants}>
-              <NeonButton color="primary">
+              <NeonButton color="primary" onClick={scrollToProducts}>
                 {t('hero.button.explore')}
               </NeonButton>
             </motion.div>
             <motion.div variants={buttonVariants}>
-              <NeonButton color="accent" outline>
+              <NeonButton color="accent" outline onClick={onOpenChat}>
                 {t('hero.button.chat')}
               </NeonButton>
             </motion.div>
