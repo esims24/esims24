@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './i18n'; // Import i18n configuration
 import './App.css';
@@ -15,8 +15,13 @@ import DownloadSection from './components/sections/DownloadSection';
 import TechStackSection from './components/sections/TechStackSection';
 import ContactSection from './components/sections/ContactSection';
 
+// Chat Components
+import FloatingChatButton from './components/chat/FloatingChatButton';
+import ChatModal from './components/chat/ChatModal';
+
 function App() {
   const { i18n } = useTranslation();
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   // Set language based on browser preference on initial load
   useEffect(() => {
@@ -25,6 +30,11 @@ function App() {
       i18n.changeLanguage('mm');
     }
   }, [i18n]);
+
+  // Handle chat modal toggle
+  const toggleChat = () => {
+    setIsChatOpen(prev => !prev);
+  };
 
   return (
     <MainLayout>
@@ -35,6 +45,13 @@ function App() {
       <DownloadSection />
       <TechStackSection />
       <ContactSection />
+      
+      {/* Chat functionality */}
+      <FloatingChatButton onClick={toggleChat} />
+      <ChatModal 
+        isOpen={isChatOpen}
+        onClose={() => setIsChatOpen(false)}
+      />
     </MainLayout>
   );
 }
