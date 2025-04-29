@@ -52,7 +52,10 @@ const enTranslation = {
   
   // Language Switcher
   "language.en": "English",
-  "language.mm": "Burmese"
+  "language.mm": "Burmese",
+  
+  // AI Assistant
+  "nexora.ai.tagline": "Your Intelligent, Bilingual eSIM and Digital Experience Partner"
 }
 
 export default enTranslation;
