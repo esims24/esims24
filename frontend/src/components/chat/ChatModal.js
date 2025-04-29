@@ -150,7 +150,7 @@ const ChatModal = ({ isOpen, onClose }) => {
                   <h2 className="text-xl font-bold text-white">Nexora™ AI</h2>
                 </div>
                 <p className="text-xs md:text-sm text-text-light ml-12 mt-1 italic">
-                  Your Intelligent, Bilingual eSIM and Digital Experience Partner
+                  {t('nexora.ai.tagline')}
                 </p>
               </div>
               <button
