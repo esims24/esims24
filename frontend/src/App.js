@@ -38,7 +38,7 @@ function App() {
 
   return (
     <MainLayout>
-      <HeroSection />
+      <HeroSection onOpenChat={toggleChat} />
       <AboutSection />
       <ProductsSection />
       <FeaturesSection />
