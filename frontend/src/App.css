@@ -1,38 +1,76 @@
-.App {
-    text-align: center;
+/* Custom styles beyond Tailwind */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Global styles */
+html {
+  scroll-behavior: smooth;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+body {
+  background-color: #0B0F19;
+  font-family: 'Inter', 'SF Pro', 'Roboto', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Neon text effect */
+.text-neon-primary {
+  text-shadow: 0 0 5px #6621A8, 0 0 20px #6621A8;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.text-neon-accent {
+  text-shadow: 0 0 5px #00FFFF, 0 0 20px #00FFFF;
 }
 
-.App-link {
-    color: #61dafb;
+/* Glassmorphism effect */
+.glassmorphic {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px #6621A8, 0 0 20px #6621A8;
+  }
+  50% {
+    box-shadow: 0 0 10px #6621A8, 0 0 30px #6621A8;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Gradients */
+.bg-gradient-glow {
+  background: radial-gradient(circle at center, rgba(102, 33, 168, 0.2) 0%, rgba(11, 15, 25, 0) 70%);
 }

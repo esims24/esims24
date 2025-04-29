@@ -1,53 +1,41 @@
-import { useEffect } from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router";
-import axios from "axios";
+import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import './i18n'; // Import i18n configuration
+import './App.css';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Layout Components
+import MainLayout from './components/layout/MainLayout';
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+// Section Components
+import HeroSection from './components/sections/HeroSection';
+import AboutSection from './components/sections/AboutSection';
+import ProductsSection from './components/sections/ProductsSection';
+import FeaturesSection from './components/sections/FeaturesSection';
+import DownloadSection from './components/sections/DownloadSection';
+import TechStackSection from './components/sections/TechStackSection';
+import ContactSection from './components/sections/ContactSection';
 
 function App() {
+  const { i18n } = useTranslation();
+
+  // Set language based on browser preference on initial load
+  useEffect(() => {
+    const browserLang = navigator.language;
+    if (browserLang.startsWith('my') || browserLang.startsWith('mm')) {
+      i18n.changeLanguage('mm');
+    }
+  }, [i18n]);
+
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <MainLayout>
+      <HeroSection />
+      <AboutSection />
+      <ProductsSection />
+      <FeaturesSection />
+      <DownloadSection />
+      <TechStackSection />
+      <ContactSection />
+    </MainLayout>
   );
 }
 
